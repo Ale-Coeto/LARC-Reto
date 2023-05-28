@@ -97,18 +97,18 @@ void Drivetrain::moveToAngle(int angle, int targetOrientation, int speed, double
 }
 
 
-void Drivetrain::rotate(double target, double cur, int speed) {
+void Drivetrain::rotate(double target, double cur, int speed1) {
   
   double k = Constants::kRotation;
   double error = (target - cur)*k;
-  speed = min(255,abs(error));
+  speed1 = min(255,abs(error));
 
-  setAllSpeeds(speed);
-  Serial.print(cur);
-  Serial.print("\t");
-  Serial.println(error);
+  setAllSpeeds(speed1);
+//   Serial.print(cur);
+//   Serial.print("\t");
+//   Serial.println(error);
 
-  if (abs(target-cur) < 3) {
+  if (abs(target-cur) < 4) {
     stop();
   } else if (error < 0) {
     motorFR.forward();
@@ -163,11 +163,11 @@ void Drivetrain::updateModel(double yaw) {
 }
 
 double Drivetrain::getX() {
-    return x + xI;
+    return x;
 }
 
 double Drivetrain::getY() {
-    return y + yI;
+    return y;
 }
 
 double Drivetrain::getOrientation() {

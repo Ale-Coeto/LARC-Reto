@@ -41,6 +41,7 @@ void Color::resetLines() {
 }
 
 bool Color::getDetectionOf(int line) {
+    checkLines();
     switch(line) {
         case FRONT:
             return linesDetected[FRONT];

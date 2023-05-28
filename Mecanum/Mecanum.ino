@@ -15,11 +15,13 @@ int distanceX = 0, distanceY = 0;
 
 //Initial values
 const int moves = 4;
-int path[moves][2] = {{5,4},{2,4},{2,6},{5,6}};
-int posInitX = 5, posInitY = 1;
-int orientationInit = 0; //-90
+int path[moves][2] = {{2,1},{2,4},{6,4},{6,5}};
 
-int currentPosition[2] = {posInitY,posInitX};
+int posInitX = 1, posInitY = 6;
+int orientationInit = -90; //-90
+int orientFin = -179;
+
+int currentPosition[2] = {posInitY,posInitX}; //5 1
 
 enum t {            //For tests
     LINES = 0,
@@ -83,7 +85,7 @@ void loop () {
     //Stop when finished
     if (current == STOP) {
         //End correctly oriented
-        drivetrain.rotate(0, bno.getYaw(), Constants::speeds);
+        drivetrain.rotate(orientFin, bno.getYaw(), Constants::speeds);
     }
 
 
@@ -129,8 +131,9 @@ void movement(int direction, int distance) {
         break;
 
         case RIGHTMOVE:
+            
             if (drivetrain.getX() < Constants::disH*distance*2) {
-                if (distance > 2)
+                if (distance > 3)
                     drivetrain.moveToAngle(90, 90, Constants::speeds, bno.getYaw());
                 else
                     drivetrain.moveToAngle(90, 0, Constants::speeds, bno.getYaw());
@@ -183,7 +186,7 @@ void start() {
     bno.start();
     drivetrain.start();
     drivetrain.setEncoders(18,17,1,2,5,1,19,16,-1,3,4,1);
-    drivetrain.setInit(posInitX,posInitY,0);
+    //drivetrain.setInit(posInitX,posInitY,0);
     bno.setOffset(orientationInit);
     lines.start();
     initEncoders();
