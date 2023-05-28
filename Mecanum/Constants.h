@@ -9,7 +9,7 @@ class Constants {
         static constexpr double kMovement = 25;
         static constexpr double kPulsesPerRevolution = 295.0;
         static constexpr double colorThreshold = 100;
-        static constexpr double disV = 27.5;
+        static constexpr double disV = 28.5;
         static constexpr double disH = 39.2;
 
 };

@@ -15,9 +15,9 @@ int distanceX = 0, distanceY = 0;
 
 //Initial values
 const int moves = 4;
-int path[moves][2] = {{2,4},{6,4},{6,6},{5,6}};
-int posInitX = 2, posInitY = 2;
-int orientationInit = 180; //-90
+int path[moves][2] = {{5,4},{2,4},{2,6},{5,6}};
+int posInitX = 5, posInitY = 1;
+int orientationInit = 0; //-90
 
 int currentPosition[2] = {posInitY,posInitX};
 
@@ -227,10 +227,10 @@ void encoderCallbackBL() {
 int getOrientation() {
     bno.readValues();
     double yaw = bno.getYaw();
-    if (yaw > -45 && yaw < 45) return 0;
-    else if (yaw >= 45 && yaw < 135) return 90;
-    else if (yaw >= 135 || yaw < -135) return 180;
-    else return -90;
+    if (yaw > -10 && yaw < 10) return 0;
+    else if (yaw > 80 && yaw < 110) return 90;
+    else if (yaw > 170 || yaw < -110) return 180;
+    else if (yaw > -100 && yaw < -80) return -90;
 }
 //Tests
 void tests(int test) {
