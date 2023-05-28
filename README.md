@@ -6,5 +6,7 @@ Movimiento basado en estados:
 - Parar
 
 Posición universal del robot basado en lecturas las lecturas de los encoders y el modelo kinemático.
+
 Función de movimiento, hacia el ángulo y orientación indicadas con correcciones de imu.
+
 Lectura de sensores de luz para corregir posiciones finales que puedan terminar sobre la línea.
